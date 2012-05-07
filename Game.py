@@ -12,7 +12,7 @@ def validMoves(board, fromRow, fromIndex):
 	rValidMoves = []
 	for row, index, jumpsOver in allMoves: 
 		jumpedOverRow, jumpedOverIndex = jumpsOver 
-		if board.space_exist(row, index) and board.is_empty_space(row, index) and board.is_peg(jumpedOverRow, jumpedOverIndex):
+		if board.isValidBoardPosition(row, index) and board.isSpace(row, index) and board.isPeg(jumpedOverRow, jumpedOverIndex):
 			rValidMoves.append( [(fromRow, fromIndex),(row, index), jumpsOver] )
 	return rValidMoves
 
@@ -26,7 +26,7 @@ def play(board):
 			print "number of winning games found " + str(len(winningGames))
 	else: 
 		for row, index in board:
-			if board.is_peg(row, index): 
+			if board.isPeg(row, index): 
 				someValidMoves = validMoves(board, row, index)
 				for aValidMove in someValidMoves: 
 					newBoard = copy.deepcopy(board)

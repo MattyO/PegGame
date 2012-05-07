@@ -38,13 +38,13 @@ class Board():
 			currentRowSize += 1
 		self._board[0][0] = False
 		
-	def print_board(self):
+	def printBoard(self):
 		oldRow = 0
 		for row, index in self:
 			if oldRow != row:
 				print
 				oldRow = row
-			if self.is_peg(row, index):
+			if self.isPeg(row, index):
 				print '+',
 			else: 
 				print '0',
@@ -77,18 +77,18 @@ class Board():
 	def numPegs(self):
 		rNumPegs = 0
 		for row, index in self: 
-			if self.is_peg(row, index): 
+			if self.isPeg(row, index): 
 				rNumPegs += 1
 		return rNumPegs
 	
-	def is_empty_space(self, row, index):
-		return self.space_exist(row, index) and self.get_contents(row, index) == self.SPACE
-	def is_peg(self, row, index):
-		return self.space_exist(row, index) and self.get_contents(row, index) == self.PEG
-	def get_contents(self, row, index): 
+	def isSpace(self, row, index):
+		return self.isValidBoardPosition(row, index) and self.getContents(row, index) == self.SPACE
+	def isPeg(self, row, index):
+		return self.isValidBoardPosition(row, index) and self.getContents(row, index) == self.PEG
+	def getContents(self, row, index): 
 		return self._board[row][index] 
-	def remove_peg(self, row, index): 
+	def removePeg(self, row, index): 
 		self._board[row][index] = False
-	def space_exist(self, row,index): 
+	def isValidBoardPosition(self, row,index): 
 		return self._board.has_key(row) and self._board[row].has_key(index)
 	

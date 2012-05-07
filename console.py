@@ -1,6 +1,6 @@
 import Game
 
-Game.defaultBoard.print_board()
+Game.defaultBoard.printBoard()
     
 Game.play(Game.defaultBoard)
 
